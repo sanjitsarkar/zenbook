@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LinkButton = ({ to, name }) => {
+export const LinkButton = ({ to, name }) => {
   return (
     <Link
       to={`/${to}`}
@@ -11,5 +11,3 @@ const LinkButton = ({ to, name }) => {
     </Link>
   );
 };
-
-export default LinkButton;

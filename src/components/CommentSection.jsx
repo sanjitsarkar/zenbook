@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { MdSend } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ReplySection } from ".";
 import { addReply, fetchAllReply } from "../services/replies/repliesService";
 import { PROFILE_PIC_PLACEHOLDER } from "../utils";
-import Reply from "./ReplySection";
-const CommentSection = ({ commentInfo, postedBy }) => {
+export const CommentSection = ({ commentInfo, postedBy }) => {
   const user = useSelector((state) => state.auth?.user);
   const replies = useSelector((state) => state.replies?.data);
   const {
@@ -17,7 +17,7 @@ const CommentSection = ({ commentInfo, postedBy }) => {
   const [showReplyInput, setShowReplyInput] = useState(false);
   useEffect(() => {
     dispatch(fetchAllReply(commentInfo._id));
-  }, []);
+  }, [commentInfo, dispatch]);
   return (
     <div className="flex flex-wrap  gap-2 item-center  ">
       <Link to={`/profile/${id}`}>
@@ -49,7 +49,7 @@ const CommentSection = ({ commentInfo, postedBy }) => {
             (reply) =>
               reply &&
               reply.commentId === commentInfo._id && (
-                <Reply replyInfo={reply} key={reply._id} />
+                <ReplySection replyInfo={reply} key={reply._id} />
               )
           )}
         </div>
@@ -99,5 +99,3 @@ const CommentSection = ({ commentInfo, postedBy }) => {
     </div>
   );
 };
-
-export default CommentSection;

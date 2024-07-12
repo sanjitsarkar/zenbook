@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "../../components";
 
-const MessagePage = () => {
+export const MessagePage = () => {
   return (
     <Layout>
       <h1 className="text-center text-lightBlue text-xl mt-8">
@@ -10,5 +10,3 @@ const MessagePage = () => {
     </Layout>
   );
 };
-
-export default MessagePage;

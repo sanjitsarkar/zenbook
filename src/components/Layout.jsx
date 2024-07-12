@@ -1,9 +1,7 @@
 import React from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import SideBar from "./SideBar";
+import { Footer, Header, SideBar } from ".";
 
-const Layout = ({ children }) => {
+export const Layout = ({ children }) => {
   return (
     <div className="relative">
       <Header />
@@ -15,5 +13,3 @@ const Layout = ({ children }) => {
     </div>
   );
 };
-
-export default Layout;

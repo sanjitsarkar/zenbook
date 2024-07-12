@@ -1,6 +1,6 @@
 import React from "react";
 
-const IconButton = ({ Icon, onClick, className }) => {
+export const IconButton = ({ Icon, onClick, className }) => {
   return (
     <Icon
       onClick={onClick}
@@ -8,5 +8,3 @@ const IconButton = ({ Icon, onClick, className }) => {
     />
   );
 };
-
-export default IconButton;

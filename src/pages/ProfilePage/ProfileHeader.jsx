@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Modal from "../../components/Modal";
+import { Modal } from "../../components";
 import { updateUser } from "../../features/auth/authSlice";
 import { updateProfile } from "../../features/profile/profileSlice";
 import { followUser, unfollowUser } from "../../services/auth/authService";
 import { COVER_PHOTO_PLACEHOLDER, PROFILE_PIC_PLACEHOLDER } from "../../utils";
-import ProfileEditForm from "./ProfileEditForm.jsx";
+import { ProfileEditForm } from "./ProfileEditForm";
 
-const ProfileHeader = ({ profile }) => {
+export const ProfileHeader = ({ profile }) => {
   const postCount = useSelector(
     (state) => state.userCreatedPosts?.data?.length
   );
@@ -29,14 +29,14 @@ const ProfileHeader = ({ profile }) => {
         </Modal>
       )}
       <img
-        className="h-40 object-cover"
+        className="sm:h-40 h-32 object-cover"
         src={profile.coverPictureURL ?? COVER_PHOTO_PLACEHOLDER}
         alt={profile.name}
       />
       <div className="flex flex-col p-6 ">
-        <div className=" justify-center h-fit sm:justify-start  items-center     flex flex-wrap  gap-2  ">
+        <div className=" justify-center h-fit sm:justify-start  items-center     flex flex-wrap  ">
           <img
-            className="sm:w-32 w-28 h-28 sm:h-32 rounded-full border-8 shadow-sm aspect-square border-white object-cover relative bottom-14 sm:bottom-16  md:left-6 left-0 right-0 "
+            className="sm:w-32 w-28 h-28 sm:h-32 rounded-full border-8 shadow-sm aspect-square border-white object-cover relative bottom-14 sm:bottom-16   left-6  "
             src={profile.profilePictureURL ?? PROFILE_PIC_PLACEHOLDER}
             alt={profile.name}
           />
@@ -44,12 +44,12 @@ const ProfileHeader = ({ profile }) => {
             onClick={() => {
               setIsEditProfile(true);
             }}
-            className="cursor-pointer relative md:bottom-8 md:right-6 bottom-8 right-10 p-2 w-10 h-10 rounded-full shadow-md bg-lightBlue fill-white"
+            className="cursor-pointer relative md:bottom-8  bottom-8 right-6 p-2 w-10 h-10 rounded-full shadow-md bg-lightBlue fill-white"
           />
 
-          <div className="sm:ml-6 -mt-16   flex   flex-wrap  md:gap-10  gap-4 justify-around items-center">
-            <div className="flex flex-col gap-2">
-              <h1 className=" text-xl text-lightBlue">{profile.name}</h1>
+          <div className="sm:ml-6 -mt-14   flex   flex-wrap  md:gap-10  gap-4 justify-around items-center">
+            <div className="flex flex-col  items-center gap-2">
+              <h1 className=" text-xl  text-lightBlue">{profile.name}</h1>
               {user?._id !== profile?._id && !isFollowing && (
                 <button
                   onClick={() => {
@@ -108,7 +108,7 @@ const ProfileHeader = ({ profile }) => {
                 </button>
               )}
             </div>
-            <div className="flex  sm:mt-1 gap-6 text-lightBlue flex-wrap">
+            <div className="flex  sm:mt-1 sm:gap-6 gap-4 text-lightBlue flex-wrap items-center justify-center ">
               <h1>
                 <span className="font-semibold mr-2">{postCount}</span> post
                 {postCount > 1 ? "s" : ""}
@@ -129,7 +129,7 @@ const ProfileHeader = ({ profile }) => {
           </div>
         </div>
 
-        <div className="sm:ml-6 md:-mt-4    flex flex-col gap-1 sm:text-left text-center flex-wrap   text-lightBlue">
+        <div className="sm:ml-6 sm:-mt-10     flex flex-col gap-1 sm:text-left text-center flex-wrap   text-lightBlue">
           {profile.bio && (
             <p className="text-lightBlue text-opacity-95">
               {profile.bio ??
@@ -151,5 +151,3 @@ const ProfileHeader = ({ profile }) => {
     </div>
   );
 };
-
-export default ProfileHeader;

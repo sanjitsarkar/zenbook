@@ -18,12 +18,12 @@ export const userCreatedPostsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchUserCreatedPosts.pending, (state, action) => {
+      .addCase(fetchUserCreatedPosts.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchUserCreatedPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.posts;
+        state.data = [...state?.data, ...action.payload?.posts];
       })
       .addCase(fetchUserCreatedPosts.rejected, (state, action) => {
         state.status = "failed";

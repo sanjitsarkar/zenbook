@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { updateAllPosts } from "../../features/allPosts/allPosts";
+import { updateAllPosts } from "../../features/allPosts/allPostsSlice";
 import { updateArchivedPosts } from "../../features/archivedPosts/archivedPostsSlice";
 import { updateBookmarkedPosts } from "../../features/bookmarkedPosts/bookmarkedPostsSlice";
 import { updateDraftPosts } from "../../features/draftPosts/draftPostsSlice";
@@ -7,22 +7,30 @@ import { updateUserCreatedPosts } from "../../features/userCreatedPosts/userCrea
 import { callApi } from "../../utils";
 export const fetchAllPosts = createAsyncThunk(
   "posts/fetchAllPosts",
-  async () => {
-    const response = await callApi("get", "posts");
+  async (skip) => {
+    const response = await callApi("get", `posts?skip=${skip}`);
     return response.data;
   }
 );
 export const fetchUserFeedPosts = createAsyncThunk(
   "posts/fetchUserFeedPosts",
-  async (id) => {
-    const response = await callApi("get", `user/${id}/posts`, true);
+  async (data) => {
+    const response = await callApi(
+      "get",
+      `user/${data.id}/posts?skip=${data.skip}`,
+      true
+    );
     return response.data;
   }
 );
 export const fetchUserCreatedPosts = createAsyncThunk(
   "posts/fetchUserCreatedPosts",
-  async (id) => {
-    const response = await callApi("get", `user/posts?postedBy=${id}`, true);
+  async (data) => {
+    const response = await callApi(
+      "get",
+      `user/posts?postedBy=${data.id}&skip=${data.skip}`,
+      true
+    );
 
     return response.data;
   }
@@ -51,10 +59,10 @@ export const fetchArchivedPosts = createAsyncThunk(
 
 export const fetchUserFeedTrendingPosts = createAsyncThunk(
   "posts/fetchUserFeedTrendingPosts",
-  async (postedBy) => {
+  async (data) => {
     const response = await callApi(
       "get",
-      `user/${postedBy}/posts/trending`,
+      `user/${data.id}/posts/trending?skip=${data.skip}`,
       true
     );
     return response.data;
@@ -62,8 +70,8 @@ export const fetchUserFeedTrendingPosts = createAsyncThunk(
 );
 export const fetchAllTrendingPosts = createAsyncThunk(
   "posts/fetchAllTrendingPosts",
-  async () => {
-    const response = await callApi("get", "posts/trending");
+  async (skip) => {
+    const response = await callApi("get", `posts/trending?skip=${skip}`);
     return response.data;
   }
 );
@@ -186,8 +194,11 @@ export const removePostFromDraft = createAsyncThunk(
 
 export const searchPostsByHashTag = createAsyncThunk(
   "posts/searchPostsByHashTag",
-  async (hashTag) => {
-    const response = await callApi("get", `posts/hashtag/${hashTag}`);
+  async (data) => {
+    const response = await callApi(
+      "get",
+      `posts/hashtag/${data.hashtag}?skip=${data.skip}`
+    );
     return response.data;
   }
 );

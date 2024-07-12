@@ -26,6 +26,5 @@ export const followersSlice = createSlice({
       });
   },
 });
-export const {} = followersSlice.actions;
 
 export default followersSlice.reducer;

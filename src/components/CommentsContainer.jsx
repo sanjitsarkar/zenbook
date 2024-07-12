@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { MdSend } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { CommentSection } from ".";
 import { addComment } from "../services/comments/commentsService";
 import { PROFILE_PIC_PLACEHOLDER } from "../utils";
-import CommentSection from "./CommentSection";
-const CommentsContainer = ({
+export const CommentsContainer = ({
   setIsCommentAdded,
   comments,
   profilePictureURL,
@@ -67,5 +67,3 @@ const CommentsContainer = ({
     </div>
   );
 };
-
-export default CommentsContainer;

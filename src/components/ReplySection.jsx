@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PROFILE_PIC_PLACEHOLDER } from "../utils";
 
-const ReplySection = ({ replyInfo }) => {
+export const ReplySection = ({ replyInfo }) => {
   const {
     reply,
     repliedBy: { _id: id, profilePictureURL, name },
@@ -27,5 +27,3 @@ const ReplySection = ({ replyInfo }) => {
     </div>
   );
 };
-
-export default ReplySection;

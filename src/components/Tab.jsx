@@ -1,4 +1,10 @@
-const Tab = ({ name, onClick=()=>{}, setActiveTab, activeTab, children }) => {
+export const Tab = ({
+  name,
+  onClick = () => {},
+  setActiveTab,
+  activeTab,
+  children,
+}) => {
   return (
     <button
       onClick={() => {
@@ -14,5 +20,3 @@ const Tab = ({ name, onClick=()=>{}, setActiveTab, activeTab, children }) => {
     </button>
   );
 };
-
-export default Tab;

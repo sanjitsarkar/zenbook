@@ -1,13 +1,13 @@
 import React from "react";
-import { AddPostForm, Layout } from "../../components";
-import PostsSection from "../../components/PostsSection";
-import StorySection from "./StorySection";
+import { Layout, PostsSection } from "../../components";
+import { AddPostForm } from "./AddPostForm";
+import { StorySection } from "./StorySection";
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <Layout>
       <div className="row gap-4 ">
-        <div className="flex flex-col gap-8 md:w-5/6">
+        <div className="flex flex-col gap-8 md:w-5/6 w-full">
           <StorySection />
           <AddPostForm />
           <PostsSection type="userFeed" />
@@ -16,5 +16,3 @@ const HomePage = () => {
     </Layout>
   );
 };
-
-export default HomePage;

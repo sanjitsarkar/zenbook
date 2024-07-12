@@ -9,8 +9,8 @@ import { notify } from "../../utils";
 
 const initialState = {
   status: "idle",
-  user: JSON.parse(localStorage?.getItem("user")) ?? [],
-  isLoggedIn: JSON.parse(localStorage?.getItem("isLoggedIn")) || false,
+  user: JSON.parse(localStorage?.getItem("user")) ?? null,
+  isLoggedIn: JSON.parse(localStorage?.getItem("user")) || false,
   error: null,
 };
 export const authSlice = createSlice({
@@ -39,7 +39,6 @@ export const authSlice = createSlice({
       state.status = "succeeded";
       state.user = action.payload?.user;
       state.isLoggedIn = true;
-      localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("user", JSON.stringify(action.payload?.user));
       notify(`Welcome, ${state.user.name}`);
     });
@@ -55,7 +54,6 @@ export const authSlice = createSlice({
       state.status = "succeeded";
       state.user = action.payload?.user;
       state.isLoggedIn = true;
-      localStorage.setItem("isLoggedIn", true);
       localStorage.setItem("user", JSON.stringify(action.payload?.user));
       notify(`Welcome, ${state.user.name}`);
     });

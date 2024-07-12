@@ -6,7 +6,7 @@ import { updateProfileInfo } from "../../services/auth/authService";
 import { uploadImages } from "../../services/cloudinary/cloudinaryService";
 import { COVER_PHOTO_PLACEHOLDER, PROFILE_PIC_PLACEHOLDER } from "../../utils";
 
-const ProfileEditForm = ({ profileInfo, setIsEditProfile }) => {
+export const ProfileEditForm = ({ profileInfo, setIsEditProfile }) => {
   const user = useSelector((state) => state.auth?.user);
   const dispatch = useDispatch();
   const initialProfileState = {
@@ -219,5 +219,3 @@ const ProfileEditForm = ({ profileInfo, setIsEditProfile }) => {
     </form>
   );
 };
-
-export default ProfileEditForm;

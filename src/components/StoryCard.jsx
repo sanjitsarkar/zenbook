@@ -3,7 +3,7 @@ import { MdAddCircleOutline } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { notify, PROFILE_PIC_PLACEHOLDER } from "../utils";
 
-const StoryCard = ({
+export const StoryCard = ({
   storyThumbnail = "http://res.cloudinary.com/dddfc84ni/image/upload/v1651546264/dl7s7nrhfr1lojeu32gk.jpg",
   profileName = "John Doe",
   profileImage = "https://www.gravatar.com/avatar/94d093eda664addd6e450d7e9881bcad?s=32&d=identicon&r=PG",
@@ -52,5 +52,3 @@ const StoryCard = ({
     </div>
   );
 };
-
-export default StoryCard;

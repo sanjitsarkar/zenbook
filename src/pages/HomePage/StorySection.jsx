@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Loader, StoryCard } from "../../components";
 import { PROFILE_PIC_PLACEHOLDER } from "../../utils";
 
-const StorySection = () => {
+export const StorySection = () => {
   const stories = useSelector((state) => state.stories);
   const user = useSelector((state) => state.auth.user);
 
@@ -23,5 +23,3 @@ const StorySection = () => {
     </div>
   );
 };
-
-export default StorySection;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Layout, PostsWrapper } from "../../components";
 import { fetchBookmarkedPosts } from "../../services/posts/postsService";
 
-const BookmarkedPage = () => {
+export const BookmarkedPage = () => {
   const bookmarkedPosts = useSelector((state) => state.bookmarkedPosts);
   const userId = useSelector((state) => state.auth?.user?._id);
   const dispatch = useDispatch();
@@ -19,5 +19,3 @@ const BookmarkedPage = () => {
     </Layout>
   );
 };
-
-export default BookmarkedPage;

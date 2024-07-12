@@ -26,6 +26,5 @@ export const followingSlice = createSlice({
       });
   },
 });
-export const {} = followingSlice.actions;
 
 export default followingSlice.reducer;

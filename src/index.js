@@ -5,9 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./app/store";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { ModalProvider } from "./context/modalContext";
-import { SearchProvider } from "./context/searchContext";
-import { SideBarItemProvider } from "./context/sideBarItemContext";
+import { ModalProvider, SearchProvider, SideBarItemProvider } from "./context";
 import "./index.css";
 
 const container = document.getElementById("root");

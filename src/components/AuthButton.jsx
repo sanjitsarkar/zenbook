@@ -1,6 +1,6 @@
 import React from "react";
 
-const AuthButton = ({
+export const AuthButton = ({
   disabled = false,
   color = "bg-primary",
   name,
@@ -35,5 +35,3 @@ const AuthButton = ({
     </button>
   );
 };
-
-export default AuthButton;

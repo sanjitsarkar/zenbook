@@ -17,7 +17,11 @@ const initialState = {
 export const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    clearPosts: (state) => {
+      state.data = [];
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchUserFeedPosts.pending, (state, action) => {
@@ -25,7 +29,7 @@ export const postsSlice = createSlice({
       })
       .addCase(fetchUserFeedPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.posts;
+        state.data = [...state?.data, ...action.payload?.posts];
       })
       .addCase(fetchUserFeedPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -36,7 +40,7 @@ export const postsSlice = createSlice({
       })
       .addCase(fetchUserFeedTrendingPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.posts;
+        state.data = [...state.data, ...action.payload?.posts];
       })
       .addCase(fetchUserFeedTrendingPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -85,5 +89,7 @@ export const postsSlice = createSlice({
       });
   },
 });
+
+export const { clearPosts } = postsSlice.actions;
 
 export default postsSlice.reducer;

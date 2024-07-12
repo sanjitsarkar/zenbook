@@ -22,7 +22,7 @@ export const searchedUsersSlice = createSlice({
       })
       .addCase(searchUsers.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.users;
+        state.data = [...state?.data, ...action.payload?.users];
       })
       .addCase(searchUsers.rejected, (state, action) => {
         state.status = "failed";

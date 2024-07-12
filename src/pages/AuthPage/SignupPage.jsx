@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../../components";
 import { signup } from "../../services/auth/authService";
 import { initialSignupCredState, notify } from "../../utils";
 
-const SignupPage = () => {
+export const SignupPage = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [signupCred, setSignupCred] = useState(initialSignupCredState);
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    auth?.isLoggedIn && navigate("/");
+  }, [auth]);
   return (
     <>
       {auth.status === "loading" && (
@@ -204,5 +207,3 @@ const SignupPage = () => {
     </>
   );
 };
-
-export default SignupPage;

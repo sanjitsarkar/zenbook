@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputSection = ({
+export const InputSection = ({
   type = "text",
   label = "",
   placeholder = "",
@@ -48,5 +48,3 @@ const InputSection = ({
     </div>
   );
 };
-
-export default InputSection;

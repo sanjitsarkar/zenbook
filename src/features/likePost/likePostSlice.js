@@ -37,6 +37,5 @@ export const likePostSlice = createSlice({
       });
   },
 });
-export const {} = likePostSlice.actions;
 
 export default likePostSlice.reducer;

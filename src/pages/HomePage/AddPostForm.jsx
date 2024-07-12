@@ -8,7 +8,7 @@ import { uploadImages } from "../../services/cloudinary/cloudinaryService";
 import { createPost } from "../../services/posts/postsService";
 import { initialPostState, PROFILE_PIC_PLACEHOLDER } from "../../utils";
 
-const AddPostForm = () => {
+export const AddPostForm = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const [post, setPost] = useState(initialPostState);
@@ -185,5 +185,3 @@ const AddPostForm = () => {
     </div>
   );
 };
-
-export default AddPostForm;

@@ -92,8 +92,12 @@ export const getFollowers = createAsyncThunk(
 
 export const searchUsers = createAsyncThunk(
   "auth/searchUsers",
-  async (search) => {
-    const response = await callApi("get", `user?search=${search}`, true);
+  async (data) => {
+    const response = await callApi(
+      "get",
+      `user?search=${data.search}&skip=${data.skip}`,
+      true
+    );
     return response.data;
   }
 );

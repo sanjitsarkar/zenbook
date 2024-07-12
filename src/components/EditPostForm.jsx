@@ -4,15 +4,14 @@ import { MdClose, MdGif } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IconButton, Loader } from ".";
-import { useModal } from "../context/modalContext";
+import { useModal } from "../context";
 import { uploadImages } from "../services/cloudinary/cloudinaryService";
 import { updatePost } from "../services/posts/postsService";
 import { initialPostState, PROFILE_PIC_PLACEHOLDER } from "../utils";
-const EditPostForm = ({
+export const EditPostForm = ({
   postInfo,
   setIsEditOptionClicked,
-  setIsOptionClicked,
-  postType,
+  setShowDropDown,
 }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -22,7 +21,6 @@ const EditPostForm = ({
   const [uploadedImgUrls, setUploadedImgUrls] = useState(
     postInfo?.mediaURLs ?? []
   );
-
   const [isLoading, setIsLoading] = useState(false);
   const PhotosSetcion = () => {
     return (
@@ -73,7 +71,7 @@ const EditPostForm = ({
             <IconButton
               onClick={() => {
                 setIsEditOptionClicked(false);
-                setIsOptionClicked(false);
+                setShowDropDown(false);
                 setIsModalOpen(false);
               }}
               Icon={MdClose}
@@ -111,6 +109,7 @@ const EditPostForm = ({
                 updatePost({
                   content: post.content,
                   postId: postInfo._id,
+                  mediaURLs: uploadedImgUrls,
                   postedBy: user?._id,
                 })
               );
@@ -119,7 +118,7 @@ const EditPostForm = ({
             setImgUrls([]);
             setPost(initialPostState);
             setIsEditOptionClicked(false);
-            setIsOptionClicked(false);
+            setShowDropDown(false);
             setIsModalOpen(false);
           }}
         >
@@ -224,5 +223,3 @@ const EditPostForm = ({
       </div>
     );
 };
-
-export default EditPostForm;

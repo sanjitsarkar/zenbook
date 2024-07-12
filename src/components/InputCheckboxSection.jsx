@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputCheckboxSection = ({ label = "" }) => {
+export const InputCheckboxSection = ({ label = "" }) => {
   return (
     <div className="form-group form-check">
       <input
@@ -17,5 +17,3 @@ const InputCheckboxSection = ({ label = "" }) => {
     </div>
   );
 };
-
-export default InputCheckboxSection;

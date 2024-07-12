@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = ({ status = "", type = "full" }) => {
+export const Loader = ({ status = "", type = "full" }) => {
   if (type === "full")
     return (
       <div className="flex gap-4 flex-col justify-center items-center space-x-2 w-screen h-screen fixed top-0 left-0 right-0 z-50 bg-lightBlue bg-opacity-80 backdrop-blur-md">
@@ -31,5 +31,3 @@ const Loader = ({ status = "", type = "full" }) => {
     );
   }
 };
-
-export default Loader;

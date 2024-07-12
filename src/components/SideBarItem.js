@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SideBarItem = ({ name, Icon, activeName, onClick, _id }) => {
+export const SideBarItem = ({ name, Icon, activeName, onClick, _id }) => {
   let to = `/${name.toLowerCase()}`;
   if (name === "Home") to = "/";
   if (name === "Profile") to += `/${_id}`;
@@ -26,5 +26,3 @@ const SideBarItem = ({ name, Icon, activeName, onClick, _id }) => {
     </li>
   );
 };
-
-export default SideBarItem;

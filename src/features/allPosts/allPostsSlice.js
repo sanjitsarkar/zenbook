@@ -19,6 +19,9 @@ export const allPostsSlice = createSlice({
     updateAllPosts: (state, action) => {
       updatePostsContent(state, action);
     },
+    clearAllPosts: (state) => {
+      state.data = [];
+    },
   },
   extraReducers(builder) {
     builder
@@ -27,7 +30,7 @@ export const allPostsSlice = createSlice({
       })
       .addCase(fetchAllPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.posts;
+        state.data = [...state?.data, ...action.payload?.posts];
       })
       .addCase(fetchAllPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -38,7 +41,7 @@ export const allPostsSlice = createSlice({
       })
       .addCase(fetchAllTrendingPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload?.posts;
+        state.data = [...state?.data, ...action.payload?.posts];
       })
       .addCase(fetchAllTrendingPosts.rejected, (state, action) => {
         state.status = "failed";
@@ -60,5 +63,5 @@ export const allPostsSlice = createSlice({
   },
 });
 
-export const { updateAllPosts } = allPostsSlice.actions;
+export const { updateAllPosts, clearAllPosts } = allPostsSlice.actions;
 export default allPostsSlice.reducer;

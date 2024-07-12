@@ -1,6 +1,6 @@
 import React from "react";
 
-const DropDownOption = ({ name, onClick, Icon }) => {
+export const DropDownOption = ({ name, onClick, Icon }) => {
   return (
     <button
       onClick={onClick}
@@ -11,5 +11,3 @@ const DropDownOption = ({ name, onClick, Icon }) => {
     </button>
   );
 };
-
-export default DropDownOption;
